@@ -1,0 +1,26 @@
+---
+// レイアウトコンポーネント (BlogPostLayout.astro)
+// Markdownファイルのフロントマターからデータを受け取る
+const { frontmatter } = Astro.props;
+---
+<html lang="ja">
+<head>
+    <meta charset="utf-8" /> {/* ← 重要: 文字化けを防ぐために必ず記述 */}
+    <meta name="viewport" content="width=device-width" />
+    <title>{frontmatter.title}</title> {/* Markdownのタイトルを表示 */}
+</head>
+<body>
+    <header>
+        <p>My Astro Blog</p> {/* 例:共通ヘッダー */}
+    </header>
+    <main>
+        <h1>{frontmatter.title}</h1> {/* Markdownのタイトルを表示 */}
+        <article>
+            <slot /> {/* ← ここにMarkdown本文の内容が挿入される */}
+        </article>
+    </main>
+    <footer>
+        <p>© My Blog</p> {/* 例:共通フッター */}
+    </footer>
+</body>
+</html>

@@ -1,0 +1,43 @@
+---
+// src/pages/[...slug].astro (新規作成、src/pages/blog/[id].astro は削除)
+import { getCollection, getEntry } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro'; // レイアウトへのパスが変わることに注意
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => {
+    // params.slug に設定する値を決定
+    let slugPath;
+    if (post.data.url) {
+      // フロントマターのurlがあれば、それをパスとする
+      slugPath = post.data.url;
+    } else {
+      // なければファイルパスに基づくパス (例: 'blog/html/html-custom')
+      // post.id は 'blog/html/html-custom.md' のようなので、
+      // ディレクトリ部分 + ファイル名(拡張子なし) を使う
+      slugPath = post.id.replace(/\.md$/, ''); // .mdを除去
+    }
+
+    return {
+      // params.slug は Astro.params.slug でアクセスでき、
+      // URL の '/.../' の部分の文字列になる
+      params: { slug: slugPath },
+      props: { post }, // 記事データを渡す
+    };
+  });
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+---
+<BaseLayout title={post.data.title}>
+  <article>
+    <h1>{post.data.title}</h1>
+    <p>公開日: {post.data.pubDate.toLocaleDateString()}</p>
+    {post.data.tags && (
+      <p>タグ: {post.data.tags.join(', ')}</p>
+    )}
+    <hr />
+    <Content />
+  </article>
+</BaseLayout>
