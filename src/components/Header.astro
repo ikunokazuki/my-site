@@ -1,26 +1,30 @@
----
-
----
-
 <header>
   <div class="header-container">
     <div class="header-left">
       <img src="/images/logo.svg" alt="logo" />
     </div>
-    <div class="header-right">
+    <div class="header-right nav">
       <ul>
         <li><a href="">カテゴリー</a></li>
         <li><a href="">ブログ</a></li>
         <li><a href="">お問い合わせ</a></li>
       </ul>
     </div>
+    <button class="hamburger" aria-label="メニュー">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
   </div>
 </header>
 
 <style>
 header {
-  max-width: 1240px;
-  margin: 0 auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  width: 100%;
 }
 
 .header-container {
@@ -28,6 +32,8 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 0 50px;
+  max-width: 1240px;
+  margin: 0 auto;
 }
 
 .header-right ul {
@@ -45,4 +51,82 @@ header {
   color: #000;
 }
 
+.hamburger {
+  display: none;
+  width: 32px;
+  height: 24px;
+  position: relative;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.hamburger span {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: #000;
+  transition: 0.3s;
+}
+
+
+.hamburger span:nth-child(1) { top: 0; }
+.hamburger span:nth-child(2) { top: 11px; }
+.hamburger span:nth-child(3) { bottom: 0; }
+
+/* × に変形 */
+.hamburger.is-open span:nth-child(1) {
+  transform: rotate(45deg);
+  top: 11px;
+}
+.hamburger.is-open span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.is-open span:nth-child(3) {
+  transform: rotate(-45deg);
+  bottom: 11px;
+}
+
+
+@media screen and (max-width:768px) {
+  .hamburger {
+    display: block;
+  }
+
+  .nav {
+    position: fixed;
+    inset: 0;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(100%);
+    transition: 0.3s;
+  }
+
+  .is-open {
+    transform: translateX(0);
+  }
+
+  .nav ul {
+    flex-direction: column;
+    gap: 32px;
+    font-size: 24px;
+  }
+
+}
+
 </style>
+
+<script>
+  const hamburger = document.querySelector('.hamburger');
+  const nav = document.querySelector('.nav');
+
+  if (hamburger && nav) {
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('is-open');
+      nav.classList.toggle('is-open');
+    });
+  }
+</script>

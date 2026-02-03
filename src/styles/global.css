@@ -1,0 +1,23 @@
+body {
+  background-color: #E0F1F1;
+  font-family:
+    "Noto Sans JP",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Hiragino Kaku Gothic ProN",
+    "Hiragino Sans",
+    "Yu Gothic",
+    "Yu Gothic UI",
+    "Meiryo",
+    sans-serif;
+}
+
+p {
+  font-family:
+    "Noto Serif JP",
+    "Hiragino Mincho ProN",
+    "Yu Mincho",
+    "YuMincho",
+    "MS PMincho",
+    serif;
+}

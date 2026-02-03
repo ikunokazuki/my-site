@@ -1,0 +1,197 @@
+---
+import { Image } from "astro:assets";
+import hero from "../assets/images/hero_background.webp";
+import student_left from "../assets/images/student_left.webp";
+import student_right from "../assets/images/student_right.webp";
+import nurse_left from "../assets/images/nurse_left.webp";
+import nurse_right from "../assets/images/nurse_right.webp";
+import youth from "../assets/images/youth.webp";
+import magnifying_glass from "../assets/images/magnifying_glass.webp";
+import green_balloon from "../assets/images/green_balloon.webp";
+import yellow_balloon from "../assets/images/yellow_balloon.webp";
+import light from "../assets/images/light.webp";
+---
+
+<div class="container">
+  <Image src={hero} alt="ヒーロー画像" class="background" width={2160} height={1200} />
+  <div class="title-container">
+    <h1 class="title">こころ和む心理学</h1>
+    <p class="subtitle">心の悩みをスッキリさせるヒント集</p>
+  </div>
+  <Image src={student_left} alt="学生左画像" class="student_left hero-image" width={123} height={327} />
+  <Image src={student_right} alt="学生右画像" class="student_right hero-image" width={171} height={238} />
+  <Image src={nurse_left} alt="看護師左画像" class="nurse_left hero-image" width={160} height={323} />
+  <Image src={nurse_right} alt="看護師右画像" class="nurse_right hero-image" width={175} height={348} />
+  <Image src={youth} alt="青年画像" class="youth hero-image" width={208} height={330} />
+  <Image src={magnifying_glass} alt="虫眼鏡画像" class="magnifying_glass hero-image" width={98} height={91} />
+  <Image src={green_balloon} alt="緑の風船画像" class="green_balloon hero-image" width={86} height={170} />
+  <Image src={yellow_balloon} alt="黄色の風船画像" class="yellow_balloon hero-image" width={89} height={170} />
+  <Image src={light} alt="ライト画像" class="light hero-image" width={114} height={118} />
+</div>
+
+
+<style>
+.container {
+  position: relative;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 2160 / 1200;
+}
+
+.title-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 20;
+  white-space: nowrap;
+  text-align: center;
+}
+
+.title {
+  margin: 0 0 10px 0;
+  font-size: 48px;
+  font-weight: normal;
+}
+
+.subtitle {
+  margin: 0;
+  font-size: 24px;
+}
+
+.background {
+  width: 100%;
+  height: auto;
+}
+
+.hero-image {
+  position: absolute;
+  z-index: 10;
+  height: auto;
+}
+
+.student_left {
+  top: 8%;
+  left: 40%;
+  width: 8%;
+}
+
+.student_right {
+  top: 8%;
+  left: 52%;
+  width: 11%;
+}
+
+.nurse_left {
+  top: 60%;
+  left: 15%;
+  width: 11%;
+}
+
+.nurse_right {
+  top: 56%;
+  left: 22%;
+  width: 12%;
+}
+
+.youth {
+  top: 55%;
+  left: 70%;
+  width: 15%;
+}
+
+.magnifying_glass {
+  top: 50%;
+  left: 7%;
+  width: 7%;
+}
+
+.green_balloon {
+  top: 35%;
+  left: 15%;
+  width: 5%;
+}
+
+.yellow_balloon {
+  top: 20%;
+  left: 75%;
+  width: 5%;
+}
+
+.light {
+  top: 40%;
+  left: 85%;
+  width: 7%;
+}
+
+@media screen and (max-width:768px) {
+  .background {
+    aspect-ratio: 2 / 3;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .title {
+    font-size: 36px;
+  }
+
+  .subtitle {
+    font-size: 16px;
+  }
+
+  .student_left {
+    top: 10%;
+    left: 25%;
+    width: 18%;
+  }
+
+  .student_right {
+    top: 10%;
+    left: 45%;
+    width: 24.75%;
+  }
+
+  .nurse_left {
+    top: 60%;
+    left: 6%;
+    width: 24.75%;
+  }
+
+  .nurse_right {
+    top: 56%;
+    left: 22%;
+    width: 27%;
+  }
+
+  .youth {
+    top: 57%;
+    left: 55%;
+    width: 33.75%;
+  }
+
+  .magnifying_glass {
+    top: 28%;
+    left: 3%;
+    width: 15.75%;
+  }
+
+  .green_balloon {
+    top: 12%;
+    left: 9%;
+    width: 11.25%;
+  }
+
+  .yellow_balloon {
+    top: 9%;
+    left: 75%;
+    width: 11.25%;
+  }
+
+  .light {
+    top: 35%;
+    left: 85%;
+    width: 15.75%;
+  }
+}
+
+</style>
