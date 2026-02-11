@@ -1,14 +1,14 @@
 ---
 import { Image } from "astro:assets";
-import hero from "../assets/images/hero_background.webp";
-import student_left from "../assets/images/student_left.webp";
-import student_right from "../assets/images/student_right.webp";
-import nurse_left from "../assets/images/nurse_left.webp";
-import nurse_right from "../assets/images/nurse_right.webp";
+import hero from "../assets/images/hero-background.webp";
+import studentLeft from "../assets/images/student-left.webp";
+import studentRight from "../assets/images/student-right.webp";
+import nurseLeft from "../assets/images/nurse-left.webp";
+import nurseRight from "../assets/images/nurse-right.webp";
 import youth from "../assets/images/youth.webp";
-import magnifying_glass from "../assets/images/magnifying_glass.webp";
-import green_balloon from "../assets/images/green_balloon.webp";
-import yellow_balloon from "../assets/images/yellow_balloon.webp";
+import magnifyingGlass from "../assets/images/magnifying-glass.webp";
+import greenBalloon from "../assets/images/green-balloon.webp";
+import yellowBalloon from "../assets/images/yellow-balloon.webp";
 import light from "../assets/images/light.webp";
 ---
 
@@ -18,14 +18,14 @@ import light from "../assets/images/light.webp";
     <h1 class="title">こころ和む心理学</h1>
     <p class="subtitle">心の悩みをスッキリさせるヒント集</p>
   </div>
-  <Image src={student_left} alt="学生左画像" class="student_left hero-image" width={123} height={327} />
-  <Image src={student_right} alt="学生右画像" class="student_right hero-image" width={171} height={238} />
-  <Image src={nurse_left} alt="看護師左画像" class="nurse_left hero-image" width={160} height={323} />
-  <Image src={nurse_right} alt="看護師右画像" class="nurse_right hero-image" width={175} height={348} />
+  <Image src={studentLeft} alt="学生左画像" class="student-left hero-image" width={123} height={327} />
+  <Image src={studentRight} alt="学生右画像" class="student-right hero-image" width={171} height={238} />
+  <Image src={nurseLeft} alt="看護師左画像" class="nurse-left hero-image" width={160} height={323} />
+  <Image src={nurseRight} alt="看護師右画像" class="nurse-right hero-image" width={175} height={348} />
   <Image src={youth} alt="青年画像" class="youth hero-image" width={208} height={330} />
-  <Image src={magnifying_glass} alt="虫眼鏡画像" class="magnifying_glass hero-image" width={98} height={91} />
-  <Image src={green_balloon} alt="緑の風船画像" class="green_balloon hero-image" width={86} height={170} />
-  <Image src={yellow_balloon} alt="黄色の風船画像" class="yellow_balloon hero-image" width={89} height={170} />
+  <Image src={magnifyingGlass} alt="虫眼鏡画像" class="magnifying-glass hero-image" width={98} height={91} />
+  <Image src={greenBalloon} alt="緑の風船画像" class="green-balloon hero-image" width={86} height={170} />
+  <Image src={yellowBalloon} alt="黄色の風船画像" class="yellow-balloon hero-image" width={89} height={170} />
   <Image src={light} alt="ライト画像" class="light hero-image" width={114} height={118} />
 </div>
 
@@ -36,6 +36,7 @@ import light from "../assets/images/light.webp";
   width: 100%;
   height: auto;
   aspect-ratio: 2160 / 1200;
+  margin-bottom: 100px;
 }
 
 .title-container {
@@ -49,13 +50,12 @@ import light from "../assets/images/light.webp";
 }
 
 .title {
-  margin: 0 0 10px 0;
+  margin-bottom: 10px;
   font-size: 48px;
   font-weight: normal;
 }
 
 .subtitle {
-  margin: 0;
   font-size: 24px;
 }
 
@@ -70,25 +70,25 @@ import light from "../assets/images/light.webp";
   height: auto;
 }
 
-.student_left {
+.student-left {
   top: 8%;
   left: 40%;
   width: 8%;
 }
 
-.student_right {
+.student-right {
   top: 8%;
   left: 52%;
   width: 11%;
 }
 
-.nurse_left {
+.nurse-left {
   top: 60%;
   left: 15%;
   width: 11%;
 }
 
-.nurse_right {
+.nurse-right {
   top: 56%;
   left: 22%;
   width: 12%;
@@ -100,19 +100,19 @@ import light from "../assets/images/light.webp";
   width: 15%;
 }
 
-.magnifying_glass {
+.magnifying-glass {
   top: 50%;
   left: 7%;
   width: 7%;
 }
 
-.green_balloon {
+.green-balloon {
   top: 35%;
   left: 15%;
   width: 5%;
 }
 
-.yellow_balloon {
+.yellow-balloon {
   top: 20%;
   left: 75%;
   width: 5%;
@@ -125,6 +125,10 @@ import light from "../assets/images/light.webp";
 }
 
 @media screen and (max-width:768px) {
+  .container {
+    margin-bottom: 60px;
+  }
+
   .background {
     aspect-ratio: 2 / 3;
     object-fit: cover;
@@ -139,25 +143,25 @@ import light from "../assets/images/light.webp";
     font-size: 16px;
   }
 
-  .student_left {
+  .student-left {
     top: 10%;
     left: 25%;
     width: 18%;
   }
 
-  .student_right {
+  .student-right {
     top: 10%;
     left: 45%;
     width: 24.75%;
   }
 
-  .nurse_left {
+  .nurse-left {
     top: 60%;
     left: 6%;
     width: 24.75%;
   }
 
-  .nurse_right {
+  .nurse-right {
     top: 56%;
     left: 22%;
     width: 27%;
@@ -169,19 +173,19 @@ import light from "../assets/images/light.webp";
     width: 33.75%;
   }
 
-  .magnifying_glass {
+  .magnifying-glass {
     top: 28%;
     left: 3%;
     width: 15.75%;
   }
 
-  .green_balloon {
+  .green-balloon {
     top: 12%;
     left: 9%;
     width: 11.25%;
   }
 
-  .yellow_balloon {
+  .yellow-balloon {
     top: 9%;
     left: 75%;
     width: 11.25%;

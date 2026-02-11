@@ -3,6 +3,13 @@
     <div class="header-left">
       <img src="/images/logo.svg" alt="logo" />
     </div>
+    <div class="header-right static-nav">
+      <ul>
+        <li><a href="">カテゴリー</a></li>
+        <li><a href="">ブログ</a></li>
+        <li><a href="">お問い合わせ</a></li>
+      </ul>
+    </div>
     <div class="header-right nav">
       <ul>
         <li><a href="">カテゴリー</a></li>
@@ -34,6 +41,12 @@ header {
   padding: 0 50px;
   max-width: 1240px;
   margin: 0 auto;
+  height: 50px;
+}
+
+.nav {
+  display: none;
+  transform: translateX(100%);
 }
 
 .header-right ul {
@@ -53,45 +66,50 @@ header {
 
 .hamburger {
   display: none;
-  width: 32px;
-  height: 24px;
+  width: 60px;
+  height: 60px;
   position: relative;
-  background: none;
+  background: #D2E7BF;
+  border-radius: 50%;
   border: none;
   cursor: pointer;
 }
 
 .hamburger span {
   position: absolute;
-  left: 0;
-  width: 100%;
+  left: 14px;
+  width: 32px;
   height: 2px;
   background: #000;
   transition: 0.3s;
 }
 
 
-.hamburger span:nth-child(1) { top: 0; }
-.hamburger span:nth-child(2) { top: 11px; }
-.hamburger span:nth-child(3) { bottom: 0; }
+.hamburger span:nth-child(1) { top: 18px; }
+.hamburger span:nth-child(2) { top: 29px; }
+.hamburger span:nth-child(3) { bottom: 19px; }
 
 /* × に変形 */
 .hamburger.is-open span:nth-child(1) {
   transform: rotate(45deg);
-  top: 11px;
+  top: 29px;
 }
 .hamburger.is-open span:nth-child(2) {
   opacity: 0;
 }
 .hamburger.is-open span:nth-child(3) {
   transform: rotate(-45deg);
-  bottom: 11px;
+  bottom: 29px;
 }
 
 
 @media screen and (max-width:768px) {
   .hamburger {
     display: block;
+  }
+
+  .static-nav {
+    display: none;
   }
 
   .nav {
@@ -101,7 +119,6 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
-    transform: translateX(100%);
     transition: 0.3s;
   }
 

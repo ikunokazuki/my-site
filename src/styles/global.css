@@ -12,12 +12,6 @@ body {
     sans-serif;
 }
 
-p {
-  font-family:
-    "Noto Serif JP",
-    "Hiragino Mincho ProN",
-    "Yu Mincho",
-    "YuMincho",
-    "MS PMincho",
-    serif;
+h1, h2, h3, h4, h5, h6, p {
+  margin: 0;
 }
