@@ -1,5 +1,7 @@
 ---
 const { title = "My Site" } = Astro.props;
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
 ---
 <!doctype html>
 <html lang="ja">
@@ -9,17 +11,12 @@ const { title = "My Site" } = Astro.props;
     <title>{title}</title>
   </head>
   <body>
-    <header>
-      <p>My Astro Blog</p>
-    </header>
+    <Header />
 
     <main>
       <slot />
     </main>
 
-    <footer>
-      <p>© My Blog</p>
-    </footer>
+    <Footer />
   </body>
 </html>
-機能

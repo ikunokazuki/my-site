@@ -1,0 +1,138 @@
+---
+import { Image } from "astro:assets";
+import test from "../assets/images/test.png";
+const { variant = "horizontal"} = Astro.props;
+---
+
+<div class={`container ${variant}`}>
+  <h2 class="title">自己紹介</h2>
+  <div class="flex-container">
+    <div class="image">
+      <Image src={test} alt="" class="" width={250} height={250} />
+    </div>
+    <div class="administrator">
+      <p>管理者</p>
+      <p class="name">kazuki</p>
+    </div>
+    <div class="introduction">
+      <p>
+        はじめまして。<br>
+        このサイトでは、思考と感情の関係についてまとめています。<br>
+        <br>
+        私は今でも、緊張する場面が得意ではありません。<br>
+        できれば避けたいと思ってしまうこともあります。<br>
+        それを変えたくて、少しずつ向き合っています。<br>
+        <br>
+        心理学を学んでも、いつも前向きでいられるわけではありません。<br>
+        怒ったり、落ち込んだり、不安になることもあります。<br>
+        <br>
+        それでも、少しだけ考え方を変えることで、気持ちは少し軽くなると感じています。<br>
+        今よりほんの少し、ラクになれるきっかけになれたら嬉しいです。
+      </p>
+    </div>
+  </div>
+</div>
+
+<style>
+.container {
+  width: 80%;
+  margin: 0 auto 100px;
+}
+
+.container.vertical {
+  width: 250px;
+  margin: 0 auto;
+}
+
+.title {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 40px;
+}
+
+.container.vertical .title {
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.flex-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.container.vertical .flex-container {
+  display: block;
+  position: relative;
+}
+
+.image {
+  width: 30%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.container.vertical .image {
+  width: 100%;
+  display: inline;
+}
+
+.administrator {
+  width: 20%;
+  max-width: 100px;
+  margin:0 auto;
+}
+
+.container.vertical .administrator {
+  width: 100%;
+  max-width: none;
+  margin: 0 0 20px;
+  position: absolute;
+  top: 190px;
+  left: 0;
+}
+
+.name {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.introduction {
+  width: 50%;
+  font-family:
+  "Noto Serif JP",
+  "Hiragino Mincho ProN",
+  "Yu Mincho",
+  "YuMincho",
+  "MS PMincho",
+  serif;
+}
+
+.container.vertical .introduction {
+  width: 100%;
+}
+
+@media screen and (max-width:768px) {
+  .flex-container {
+    display: block;
+  }
+
+  .image {
+    display: block;
+    width: 100%;
+  }
+
+  .administrator {
+    display: block;
+    margin: 0 0 20px;
+    max-width: none;
+    width: 100%;
+  }
+
+  .introduction {
+    width: 100%;
+  }
+
+
+}
+
+</style>
