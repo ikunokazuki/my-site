@@ -8,7 +8,7 @@ const { variant = "horizontal"} = Astro.props;
   <h2 class="title">自己紹介</h2>
   <div class="flex-container">
     <div class="image">
-      <Image src={test} alt="" class="" width={250} height={250} />
+      <Image src={test} alt="" class="face" width={250} height={250} />
     </div>
     <div class="administrator">
       <p>管理者</p>
@@ -42,6 +42,7 @@ const { variant = "horizontal"} = Astro.props;
 .container.vertical {
   width: 250px;
   margin: 0 auto;
+  margin-left: 50px;
 }
 
 .title {
@@ -114,6 +115,7 @@ const { variant = "horizontal"} = Astro.props;
 @media screen and (max-width:768px) {
   .flex-container {
     display: block;
+    position: relative;
   }
 
   .image {
@@ -126,6 +128,9 @@ const { variant = "horizontal"} = Astro.props;
     margin: 0 0 20px;
     max-width: none;
     width: 100%;
+    position: absolute;
+    top: 190px;
+    left: 0;
   }
 
   .introduction {
@@ -134,5 +139,72 @@ const { variant = "horizontal"} = Astro.props;
 
 
 }
+@media screen and (max-width:1100px) {
+  .container.vertical {
+  width: 600px;
+  margin: 0 auto;
+  }
 
+  .container.vertical .flex-container {
+  display: flex;
+  justify-content: space-around;
+  position: static;
+  }
+
+  .container.vertical .image {
+    width: 30%;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .container.vertical .face{
+    width: 180px;
+    height: 180px;
+  }
+
+  .container.vertical .administrator {
+    width: 20%;
+    max-width: 100px;
+    margin: 0;
+    position: static;
+  }
+
+  .container.vertical .introduction {
+    width: 50%;
+  }
+}
+
+@media screen and (max-width:600px) {
+  .container.vertical {
+    width: initial;
+    max-width: 100%;
+    margin: 20px;
+  }
+
+  .container.vertical .flex-container {
+    display: block;
+    position: relative;
+  }
+
+  .container.vertical .image {
+    display: block;
+    width: 100%;
+  }
+
+  .container.vertical .face {
+    width: 250px;
+    height: 250px;
+  }
+
+  .container.vertical .administrator {
+    position: absolute;
+    top: 190px;
+    left: 0;
+  }
+
+  .container.vertical .introduction {
+    width: 100%;
+  }
+
+}
 </style>

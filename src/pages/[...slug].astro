@@ -1,16 +1,16 @@
 ---
 // src/pages/[...slug].astro (個別記事ページのテンプレート)
-import { getCollection, getEntry } from 'astro:content';
+import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro'; // レイアウトへのパスが変わることに注意
-import Profile from '../components/Profile.astro';
-import { Image } from "astro:assets";
-import cloud from "../assets/images/cloud.webp";
-import rectangle from "../assets/images/rectangle.webp";
-import '../styles/global.css';
+import CategoryHeader from '../components/CategoryHeader.astro';
+import Sidebar from '../components/Sidebar.astro';
 
 export async function getStaticPaths() {
-  const posts = await getCollection('blog');
-  return posts.map((post) => {
+  const blogPosts = await getCollection('blog');
+  const psychologyPosts = await getCollection('psychology');
+  const allPosts = [...blogPosts, ...psychologyPosts];
+
+  return allPosts.map((post) => {
     // params.slug に設定する値を決定
     let slugPath;
     if (post.data.url) {
@@ -33,173 +33,49 @@ export async function getStaticPaths() {
 }
 
 const { post } = Astro.props;
+
+const categoryHeaderMap = {
+  blog: 'ブログ',
+  mental: 'メンタル改善',
+  motivation: 'モチベーション',
+};
+
+function getCategoryHeaderTitle(post) {
+  if (post.collection === 'blog') {
+    return categoryHeaderMap.blog;
+  }
+  if (post.collection === 'psychology') {
+    return categoryHeaderMap[post.data.category];
+  }
+}
+
 const { Content } = await post.render();
 ---
+
 <BaseLayout title={post.data.title}>
-  <div class="container">
-    <div class="title">
-      <div class="image-container">
-        <Image src={rectangle} alt="" class="rectangle" width={1200} height={150} />
-        <Image src={cloud} alt="" class="cloud" width={367} height={302} />
-        <h1 class="text">ブログ</h1>
-      </div>
-      <div class="triangle-container">
-        <span class="triangle"></span>
-        <span class="triangle"></span>
-        <span class="triangle"></span>
-        <span class="triangle"></span>
-        <span class="triangle"></span>
-        <span class="triangle"></span>
-        <span class="triangle"></span>
-        <span class="triangle"></span>
-        <span class="triangle"></span>
-        <span class="triangle"></span>
-        <span class="triangle"></span>
-        <span class="triangle"></span>
-      </div>
-    </div>
-    <div class="content-flex">
-      <article class="content-background">
-        <h1>{post.data.title}</h1>
-        <p>{post.data.pubDate.toLocaleDateString('ja-JP').replace(/\//g, '.')}</p>
-        <Content />
-      </article>
-      <aside class="sidebar">
-        <h2>人気記事</h2>
-        <div class="popular-post"></div>
-        <div>
-          <Profile variant="vertical" />
-        </div>
-      </aside>
-    </div>
+  <CategoryHeader title={getCategoryHeaderTitle(post)} />
+  <div class="content-flex">
+    <article class="content-background">
+      <h1>{post.data.title}</h1>
+      <p>{post.data.pubDate.toLocaleDateString('ja-JP').replace(/\//g, '.')}</p>
+      <img
+        src={post.data.featureImage}
+        alt={post.data.featureImageAlt}
+        loading="lazy"
+      />
+      <Content />
+    </article>
+    <Sidebar />
   </div>
 </BaseLayout>
 
 
 
 <style>
-.container{
-  margin: 0 auto;
-}
-
-.rectangle {
-  width: 100%;
-  height: 150px;
-}
-
-.triangle-container {
-  position: relative;
-}
-
-.image-container {
-  position: relative;
-}
-
-.cloud {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.text {
-  position: absolute;
-  top: 90%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 36px;
-}
-
-.triangle {
-  width: 25px;
-  height: 25px;
-  background-color: #FFEE7D;
-  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-  position: absolute;
-}
-
-.triangle:nth-child(1) {
-  top: -15px;
-  left: 27%;
-  transform: rotate(22deg);
-}
-
-.triangle:nth-child(2) {
-  top: 40px;
-  left: 22%;
-  transform: rotate(13deg);
-}
-
-.triangle:nth-child(3) {
-  top: 70px;
-  left: 26%;
-  transform: rotate(-18deg);
-  background-color: #C4D700;
-}
-
-.triangle:nth-child(4) {
-  top: 120px;
-  left: 21%;
-  transform: rotate(180deg);
-  background-color: #C4D700;
-}
-
-.triangle:nth-child(5) {
-  top: 130px;
-  left: 28%;
-  transform: rotate(35deg);
-  background-color: #C4D700;
-}
-
-.triangle:nth-child(6) {
-  top: 140px;
-  left: 33%;
-  transform: rotate(22deg);
-}
-
-.triangle:nth-child(7) {
-  top: -100px;
-  left: 70%;
-  transform: rotate(-9deg);
-}
-
-.triangle:nth-child(8) {
-  top: -90px;
-  left: 75%;
-  transform: rotate(-22deg);
-  background-color: #C4D700;
-}
-
-.triangle:nth-child(9) {
-  top: -50px;
-  left: 82%;
-  transform: rotate(14deg);
-  background-color: #C4D700;
-}
-
-.triangle:nth-child(10) {
-  top: -20px;
-  left: 74%;
-  transform: rotate(59deg);
-  background-color: #C4D700;
-}
-
-.triangle:nth-child(11) {
-  top: 10px;
-  left: 78%;
-}
-
-.triangle:nth-child(12) {
-  top: 40px;
-  left: 85%;
-  transform: rotate(19deg);
-}
-
 .content-flex {
   display: flex;
-  justify-content: space-around;
   align-items: flex-start;
-  max-width: 1240px;
+  max-width: 1000px;
   margin: 200px auto 0;
 }
 
@@ -209,14 +85,32 @@ const { Content } = await post.render();
   max-width: 700px;
 }
 
-.sidebar {
-  width: 250px;
-  margin-left: 30px;
+.content-background img {
+  max-width: 100%;
+}
+
+:global(.content-background p),
+:global(.content-background h1),
+:global(.content-background h2),
+:global(.content-background h3),
+:global(.content-background h4),
+:global(.content-background h5),
+:global(.content-background h6),
+:global(.content-background li),
+:global(.content-background a){
+  color: #000;
+  line-height: 1.8;
 }
 
 @media screen and (max-width:1100px) {
   .content-flex {
     display: block;
+  }
+
+  .content-background {
+    margin: 0 auto;
+    max-width: 540px;
+    padding: 30px 20px;
   }
 
 }

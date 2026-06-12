@@ -2,7 +2,6 @@
 import { Image } from "astro:assets";
 import manBlue from "../assets/images/man-blue.webp";
 import rightArrow from "../assets/images/right-arrow.webp";
-import womanBlue from "../assets/images/woman-blue.webp";
 import manWhite from "../assets/images/man-white.webp";
 import womanWhite from "../assets/images/woman-white.webp";
 ---
@@ -11,19 +10,14 @@ import womanWhite from "../assets/images/woman-white.webp";
   <h2 class="title">カテゴリー</h2>
   <div class="categories">
     <div class="category-top">
-      <a href="" class="category-item">
+      <a href="/mental" class="category-item mental">
         <Image src={manBlue} alt="青い服の男性" class="img" width={50} height={63} />
         <p>メンタル改善</p>
         <Image src={rightArrow} alt="右矢印" class="arrow" width={20} height={20} />
       </a>
-      <a href="" class="category-item">
-        <Image src={womanBlue} alt="青い服の女性" class="img" width={43} height={63} />
-        <p>感情コントロール</p>
-        <Image src={rightArrow} alt="右矢印" class="arrow" width={20} height={20} />
-      </a>
     </div>
     <div class="category-bottom">
-      <a href="" class="category-item">
+      <a href="/motivation" class="category-item">
         <Image src={manWhite} alt="白い服の男性" class="img" width={50} height={62} />
         <p>
           モチベーション<br>
@@ -31,9 +25,9 @@ import womanWhite from "../assets/images/woman-white.webp";
         </p>
         <Image src={rightArrow} alt="右矢印" class="arrow" width={20} height={20} />
       </a>
-      <a href="" class="category-item">
+      <a href="/blog" class="category-item">
         <Image src={womanWhite} alt="白い服の女性" class="img" width={47} height={63} />
-        <p>人間関係</p>
+        <p>ブログ</p>
         <Image src={rightArrow} alt="右矢印" class="arrow" width={20} height={20} />
       </a>
     </div>
@@ -74,6 +68,20 @@ import womanWhite from "../assets/images/woman-white.webp";
   color: #000;
   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
 }
+
+.mental {
+  width: 100%;
+}
+
+.arrow {
+  margin-left: auto;
+  margin-right: 20px;
+}
+
+.img {
+  margin: 0 20px;
+}
+
 @media (hover: hover) {
   .category-item:hover {
     transition: 0.3s;
@@ -86,14 +94,7 @@ import womanWhite from "../assets/images/woman-white.webp";
   }
 }
 
-.arrow {
-  margin-left: auto;
-  margin-right: 20px;
-}
 
-.img {
-  margin: 0 4px 0 10px;
-}
 
 @media screen and (max-width:768px) {
   .container {

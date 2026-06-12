@@ -1,0 +1,86 @@
+---
+import { getCollection } from 'astro:content';
+import '../styles/global.css';
+
+const posts = await getCollection('blog');
+posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+// URLを決定するヘルパー関数 (例)
+function getPostUrl(post) {
+  if (post.data.url) {
+    // フロントマターにurlがあれば、ルートからのパスを返す
+    return `/${post.data.url}/`;
+  }
+  // なければファイルパスに基づくデフォルトのパスを返す
+  // post.slug は 'html/html-custom' のようになる
+  return `/blog/${post.slug}/`;
+}
+---
+<div class="contents">
+  <ul>
+    {posts.map((post) => (
+    <a class="post-link" href={getPostUrl(post)}>
+      <li class="item">
+        <img
+          src={post.data.featureImage}
+          alt={post.data.featureImageAlt}
+          loading="lazy"
+        />
+        <p>{post.data.title}</p>
+        <span>{post.data.pubDate.toLocaleDateString('ja-JP').replace(/\//g, '.')}</span>
+      </li>
+    </a>
+    ))}
+  </ul>
+</div>
+
+
+<style>
+.contents {
+  max-width: 1000px;
+  margin: 200px auto 0;
+}
+
+.contents ul{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  justify-items: center;
+  gap: 60px 20px;
+  padding: 0;
+  margin: 0 20px;
+  list-style: none;
+}
+
+.item {
+  width: 250px;
+  height: 300px;
+  border: 3px solid #000;
+  border-radius: 16px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+.item img {
+  border-radius: 16px 16px 0 0;
+}
+
+.item span {
+  margin: auto 20px 10px 0;
+  text-align: right;
+}
+
+.item p {
+  font-weight: bold;
+  margin: 16px 20px 0 20px;
+}
+
+.post-link {
+  display: block;
+  text-align: center;
+  color: #604461;
+  text-decoration: none;
+}
+
+
+</style>

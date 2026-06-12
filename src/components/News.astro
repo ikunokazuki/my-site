@@ -1,0 +1,15 @@
+---
+import { getCollection } from 'astro:content';
+import NewsList from './NewsList.astro';
+
+const posts = await getCollection('psychology');
+posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const latestPosts = posts.slice(0, 4);
+---
+
+<NewsList
+  posts={latestPosts}
+  title="新着情報"
+  linkHref="/news-list/"
+  linkText="すべて見る"
+/>

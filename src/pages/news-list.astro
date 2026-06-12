@@ -1,0 +1,16 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import NewsList from '../components/NewsList.astro';
+import '../styles/global.css';
+
+const posts = await getCollection('psychology');
+posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+
+<BaseLayout>
+  <NewsList
+    posts={posts}
+    title="心理記事一覧"
+  />
+</BaseLayout>

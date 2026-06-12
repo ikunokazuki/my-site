@@ -1,11 +1,16 @@
+---
+const currentYear = new Date().getFullYear();
+---
 <footer>
   <div class="footer-container">
-    <img src="/images/logo.svg" alt="logo" />
-    <p>コピーライト</p>
-    <a href="">
+    <a href="/">
+      <img src="/images/logo.svg" alt="logo" />
+    </a>
+    <p>&copy; {currentYear} kazuki</p>
+    <a href="/privacy-policy">
       <p>プライバシーポリシー</p>
     </a>
-    <a href="">
+    <a href="/disclaimer">
       <p>免責事項</p>
     </a>
   </div>

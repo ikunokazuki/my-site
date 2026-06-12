@@ -1,9 +1,9 @@
 ---
 title: '私の最初の投稿'
 pubDate: 2025-04-13
-description: 'これは私の最初のAstroブログ投稿です。'
-tags: ["Astro", "Blog"]
 url: my-first-post
+featureImage: 'https://res.cloudinary.com/db8hdvtj8/image/upload/v1779170440/Component_53_sf76tl.png'
+featureImageAlt: 'test2'
 ---
 
 ## はじめに

@@ -1,20 +1,34 @@
 <header>
   <div class="header-container">
     <div class="header-left">
-      <img src="/images/logo.svg" alt="logo" />
+      <a href="/">
+        <img src="/images/logo.svg" alt="logo" />
+      </a>
     </div>
     <div class="header-right static-nav">
       <ul>
-        <li><a href="">カテゴリー</a></li>
-        <li><a href="">ブログ</a></li>
-        <li><a href="">お問い合わせ</a></li>
+        <li class="dropdown">
+          <button class="dropdown-toggle" >カテゴリー</button>
+          <ul class="dropdown-menu">
+            <li><a href="/mental">メンタル改善</a></li>
+            <li><a href="/motivation">モチベーション</a></li>
+          </ul>
+        </li>
+        <li><a href="/blog">ブログ</a></li>
+        <li><a href="/contact">お問い合わせ</a></li>
       </ul>
     </div>
     <div class="header-right nav">
       <ul>
-        <li><a href="">カテゴリー</a></li>
-        <li><a href="">ブログ</a></li>
-        <li><a href="">お問い合わせ</a></li>
+        <li class="dropdown">
+          <button class="dropdown-toggle">カテゴリー <span class="arrow"></span></button>
+          <ul class="dropdown-menu">
+            <li><a href="/mental">メンタル改善</a></li>
+            <li><a href="/motivation">モチベーション</a></li>
+          </ul>
+        </li>
+        <li><a href="/blog">ブログ</a></li>
+        <li><a href="/contact">お問い合わせ</a></li>
       </ul>
     </div>
     <button class="hamburger" aria-label="メニュー">
@@ -26,125 +40,270 @@
 </header>
 
 <style>
-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 100;
-  width: 100%;
-}
-
-.header-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 50px;
-  max-width: 1240px;
-  margin: 0 auto;
-  height: 50px;
-  width: 80%;
-}
-
-.nav {
-  display: none;
-  transform: translateX(100%);
-}
-
-.header-right ul {
-  display: flex;
-  list-style: none;
-  margin: 0;
-}
-
-.header-right ul li {
-  margin: 0 15px;
-}
-
-.header-right ul li a {
-  text-decoration: none;
-  color: #604461;
-}
-
-.hamburger {
-  display: none;
-  width: 60px;
-  height: 60px;
-  position: relative;
-  background: #D2E7BF;
-  border-radius: 50%;
-  border: none;
-  cursor: pointer;
-}
-
-.hamburger span {
-  position: absolute;
-  left: 14px;
-  width: 32px;
-  height: 2px;
-  background: #000;
-  transition: 0.3s;
-}
-
-
-.hamburger span:nth-child(1) { top: 18px; }
-.hamburger span:nth-child(2) { top: 29px; }
-.hamburger span:nth-child(3) { bottom: 19px; }
-
-/* × に変形 */
-.hamburger.is-open span:nth-child(1) {
-  transform: rotate(45deg);
-  top: 29px;
-}
-.hamburger.is-open span:nth-child(2) {
-  opacity: 0;
-}
-.hamburger.is-open span:nth-child(3) {
-  transform: rotate(-45deg);
-  bottom: 29px;
-}
-
-
-@media screen and (max-width:768px) {
-  .hamburger {
-    display: block;
+  header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    width: 100%;
   }
 
-  .static-nav {
-    display: none;
+  .header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 50px;
+    max-width: 1240px;
+    margin: 0 auto;
+    height: 50px;
+    width: 80%;
   }
 
   .nav {
-    position: fixed;
-    inset: 0;
-    background: #fff;
+    display: none;
+    transform: translateX(100%);
+    background-color: #e0f1f1;
+  }
+
+  .header-right ul {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    list-style: none;
+    margin: 0;
+  }
+
+  .header-right ul li {
+    margin: 0 15px;
+  }
+
+  .header-right ul li a {
+    text-decoration: none;
+    color: #604461;
+  }
+
+  .hamburger {
+    display: none;
+    width: 60px;
+    height: 60px;
+    position: relative;
+    background: #d2e7bf;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+  }
+
+  .hamburger span {
+    position: absolute;
+    left: 14px;
+    width: 32px;
+    height: 2px;
+    background: #000;
     transition: 0.3s;
   }
 
-  .is-open {
-    transform: translateX(0);
+  .hamburger span:nth-child(1) {
+    top: 18px;
+  }
+  .hamburger span:nth-child(2) {
+    top: 29px;
+  }
+  .hamburger span:nth-child(3) {
+    bottom: 19px;
   }
 
-  .nav ul {
+  /* × に変形 */
+  .hamburger.is-open span:nth-child(1) {
+    transform: rotate(45deg);
+    top: 29px;
+  }
+  .hamburger.is-open span:nth-child(2) {
+    opacity: 0;
+  }
+  .hamburger.is-open span:nth-child(3) {
+    transform: rotate(-45deg);
+    bottom: 29px;
+  }
+
+  /* Dropdown base styles */
+  .dropdown {
+    position: relative;
+  }
+
+  .dropdown-toggle {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    border: none;
+    background: none;
+    font-size: 16px;
+    color: #604461;
+    padding: 0;
+  }
+
+  /* Desktop dropdown styles */
+  .static-nav .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    background-color: #ffffff;
+    border: 1px solid #E0F1F1;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 10px 0;
+    border-radius: 8px;
+    list-style: none;
+    z-index: 10;
+    opacity: 0;
+    visibility: hidden;
+    transition:
+      opacity 0.3s ease,
+      transform 0.3s ease,
+      visibility 0.3s ease;
+    margin: 0;
+    display: flex;
     flex-direction: column;
-    gap: 32px;
-    font-size: 24px;
   }
 
-}
+  .static-nav .dropdown-menu li {
+    margin: 0;
+  }
 
+  .static-nav .dropdown-menu li a {
+    display: block;
+    padding: 10px 20px;
+    font-size: 14px;
+    color: #604461;
+    text-decoration: none;
+    transition:
+      background-color 0.2s ease,
+      color 0.2s ease;
+    white-space: nowrap;
+    text-align: center;
+  }
+
+  .static-nav .dropdown-menu li a:hover {
+    background-color: #e0f1f1;
+  }
+
+  /* Hover logic for desktop */
+  @media (hover: hover) {
+    .static-nav .dropdown:hover .dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-50%) translateY(0);
+    }
+    .static-nav .dropdown:hover .arrow {
+      transform: rotate(180deg);
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .hamburger {
+      display: block;
+    }
+
+    .static-nav {
+      display: none;
+    }
+
+    .nav {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: 0.3s;
+    }
+
+    .is-open {
+      transform: translateX(0);
+    }
+
+    .nav ul {
+      flex-direction: column;
+      gap: 80px 0;
+      font-size: 24px;
+      padding:0 20px;
+    }
+
+    /* Mobile dropdown styles */
+    .nav .dropdown-menu {
+      display: none;
+      list-style: none;
+      margin: 0;
+      width: 100%;
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .nav .dropdown.is-open .dropdown-menu {
+      display: flex;
+      flex-direction: column;
+      gap: 0px;
+      align-items: center;
+    }
+
+    .dropdown-toggle {
+      font-size: 24px;
+    }
+
+    .nav .dropdown {
+      position: relative;
+    }
+
+    /* モバイルでは三角を表示 */
+    .nav .dropdown-toggle .arrow {
+      display: inline-block;
+      width: 0;
+      height: 0;
+      margin-left: 6px;
+      vertical-align: middle;
+      border-top: 4px solid #604461;
+      border-right: 4px solid transparent;
+      border-left: 4px solid transparent;
+      transition: transform 0.2s ease;
+    }
+
+    .nav .dropdown.is-open .arrow {
+      transform: rotate(180deg);
+    }
+
+    .nav .dropdown-menu li {
+      margin: 0;
+    }
+
+    .nav .dropdown-menu li a {
+      font-size: 18px;
+      opacity: 0.8;
+    }
+
+    .nav .dropdown-menu li a:hover {
+      opacity: 1;
+    }
+  }
 </style>
 
 <script>
-  const hamburger = document.querySelector('.hamburger');
-  const nav = document.querySelector('.nav');
+  const hamburger = document.querySelector(".hamburger");
+  const nav = document.querySelector(".nav");
 
   if (hamburger && nav) {
-    hamburger.addEventListener('click', () => {
-      hamburger.classList.toggle('is-open');
-      nav.classList.toggle('is-open');
+    hamburger.addEventListener("click", () => {
+      hamburger.classList.toggle("is-open");
+      nav.classList.toggle("is-open");
+    });
+  }
+
+  // Mobile dropdown toggle
+  const mobileDropdownToggle = document.querySelector(".nav .dropdown-toggle");
+  if (mobileDropdownToggle) {
+    mobileDropdownToggle.addEventListener("click", (e) => {
+      e.preventDefault();
+      const parent = mobileDropdownToggle.closest(".dropdown");
+      if (parent) {
+        parent.classList.toggle("is-open");
+      }
     });
   }
 </script>
