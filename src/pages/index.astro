@@ -1,5 +1,5 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/Hero.astro';
 import News from '../components/News.astro';
 import SiteDescription from '../components/SiteDescription.astro';
@@ -9,13 +9,13 @@ import Footer from '../components/Footer.astro';
 
 ---
 
-<Layout>
+<BaseLayout>
 	<Hero />
 	<News />
 	<SiteDescription />
 	<Category />
 	<Profile />
 	<Footer />
-</Layout>
+</BaseLayout>
 
 
