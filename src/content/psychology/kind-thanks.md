@@ -1,6 +1,6 @@
 ---
 title: '親切や感謝することについて'
-pubDate: 2025-04-08
+pubDate: 2026-06-14
 url: kind-thanks
 category: "mental"
 featureImage: 'https://res.cloudinary.com/db8hdvtj8/image/upload/v1779170440/Component_53_sf76tl.png'

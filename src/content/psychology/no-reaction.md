@@ -1,6 +1,6 @@
 ---
 title: '反応しない、こだわりを緩めること'
-pubDate: 2025-04-04
+pubDate: 2026-06-10
 url: no-reaction
 category: "mental"
 featureImage: 'https://res.cloudinary.com/db8hdvtj8/image/upload/v1779170440/Component_53_sf76tl.png'

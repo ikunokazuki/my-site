@@ -1,6 +1,6 @@
 ---
 title: '行動の習慣化について'
-pubDate: 2025-04-07
+pubDate: 2026-06-13
 url: habit
 category: "motivation"
 featureImage: 'https://res.cloudinary.com/db8hdvtj8/image/upload/v1779170440/Component_53_sf76tl.png'

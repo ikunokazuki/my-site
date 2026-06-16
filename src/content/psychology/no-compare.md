@@ -1,6 +1,6 @@
 ---
 title: '比較しないことについて'
-pubDate: 2025-04-05
+pubDate: 2026-06-11
 url: no-compare
 category: "mental"
 featureImage: 'https://res.cloudinary.com/db8hdvtj8/image/upload/v1779170440/Component_53_sf76tl.png'

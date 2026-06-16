@@ -1,6 +1,6 @@
 ---
 title: '快適さや刺激に慣れてしまう心、なぜもっと求めてしまうのか'
-pubDate: 2025-04-06
+pubDate: 2026-06-12
 url: comfort-stimulus
 category: "mental"
 featureImage: 'https://res.cloudinary.com/db8hdvtj8/image/upload/v1779170440/Component_53_sf76tl.png'

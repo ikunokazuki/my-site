@@ -1,6 +1,6 @@
 ---
 title: '思考が変わると感情も変わることがある'
-pubDate: 2025-04-03
+pubDate: 2026-06-09
 url: change-emotion
 category: "mental"
 featureImage: 'https://res.cloudinary.com/db8hdvtj8/image/upload/v1779170440/Component_53_sf76tl.png'
