@@ -2,8 +2,8 @@
 title: '心理系のブログサイトを作ってみました。'
 pubDate: 2026-06-16
 url: create-site
-featureImage: 'https://res.cloudinary.com/db8hdvtj8/image/upload/v1779170440/Component_53_sf76tl.png'
-featureImageAlt: 'test2'
+featureImage: 'https://res.cloudinary.com/db8hdvtj8/image/upload/f_auto,q_auto/v1782195742/create-site_z0eg5z.webp'
+featureImageAlt: 'create-site'
 ---
 初めまして、こんにちは。  
 このサイトを管理しているカズキといいます。  

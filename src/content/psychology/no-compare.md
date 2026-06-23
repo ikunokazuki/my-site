@@ -3,8 +3,8 @@ title: '比較しないことについて'
 pubDate: 2026-06-11
 url: no-compare
 category: "mental"
-featureImage: 'https://res.cloudinary.com/db8hdvtj8/image/upload/v1779170440/Component_53_sf76tl.png'
-featureImageAlt: 'test2'
+featureImage: 'https://res.cloudinary.com/db8hdvtj8/image/upload/f_auto,q_auto/v1782193209/no-compare_z5zywq.webp'
+featureImageAlt: 'no-compare'
 ---
 今回は、  
 「他人との比較」についてお話ししたいと思います。  

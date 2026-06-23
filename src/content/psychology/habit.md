@@ -3,8 +3,8 @@ title: '行動の習慣化について'
 pubDate: 2026-06-13
 url: habit
 category: "motivation"
-featureImage: 'https://res.cloudinary.com/db8hdvtj8/image/upload/v1779170440/Component_53_sf76tl.png'
-featureImageAlt: 'test2'
+featureImage: 'https://res.cloudinary.com/db8hdvtj8/image/upload/f_auto,q_auto/v1782194831/habit_jteymo.webp'
+featureImageAlt: 'habit'
 ---
 今回は、  
 「習慣」についてお話ししたいと思います。  

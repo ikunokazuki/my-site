@@ -3,8 +3,8 @@ title: '親切や感謝することについて'
 pubDate: 2026-06-14
 url: kind-thanks
 category: "mental"
-featureImage: 'https://res.cloudinary.com/db8hdvtj8/image/upload/v1779170440/Component_53_sf76tl.png'
-featureImageAlt: 'test2'
+featureImage: 'https://res.cloudinary.com/db8hdvtj8/image/upload/f_auto,q_auto/v1782194343/thanks_hb88qu.webp'
+featureImageAlt: 'thanks'
 ---
 今回は、  
 「親切」や「感謝」についてお話ししたいと思います。  

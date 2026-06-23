@@ -3,8 +3,8 @@ title: '受容すること、気をそらすこと'
 pubDate: 2026-06-08
 url: accept
 category: "mental"
-featureImage: 'https://res.cloudinary.com/db8hdvtj8/image/upload/v1779170440/Component_53_sf76tl.png'
-featureImageAlt: 'test2'
+featureImage: 'https://res.cloudinary.com/db8hdvtj8/image/upload/f_auto,q_auto/v1782188985/accept-image_brrbmb.webp'
+featureImageAlt: 'accept-image'
 ---
 この記事では、
 - 受容

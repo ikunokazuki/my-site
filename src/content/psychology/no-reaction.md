@@ -3,8 +3,8 @@ title: '反応しない、こだわりを緩めること'
 pubDate: 2026-06-10
 url: no-reaction
 category: "mental"
-featureImage: 'https://res.cloudinary.com/db8hdvtj8/image/upload/v1779170440/Component_53_sf76tl.png'
-featureImageAlt: 'test2'
+featureImage: 'https://res.cloudinary.com/db8hdvtj8/image/upload/f_auto,q_auto/v1782192492/no-reaction_kkzea8.webp'
+featureImageAlt: 'no-reaction'
 ---
 今回は、反応しないことと、こだわりを少し緩めることについて書いてみたいと思います。  
 日常の中で、誰かの言葉に傷ついたり、腹が立ったりすることは誰にでもあると思います。  
