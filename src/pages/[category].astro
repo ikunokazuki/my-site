@@ -1,3 +1,5 @@
+export const prerender = true;
+
 ---
 // src/pages/category/[category].astro
 import { getCollection } from 'astro:content';
@@ -32,17 +34,20 @@ export async function getStaticPaths() {
   });
 }
 
-// getStaticPathsから渡されたデータを受け取る
-const { category, posts } = Astro.props;
-// 記事を日付順にソート (任意)
-posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+// 静的生成ではgetStaticPathsのpropsを使い、SSRでは現在のURLから記事を取得する。
+const allPosts = await getCollection('psychology');
+const requestedCategory = Astro.params.category;
+const category = Astro.props?.category ?? requestedCategory;
+const posts = (Astro.props?.posts ??
+  allPosts.filter((post) => post.data.category === requestedCategory)
+).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
 // URLを決定するヘルパー関数 (個別記事ページへのリンク用、前の手順から流用)
 function getPostUrl(post) {
   if (post.data.url) {
     return `/${post.data.url}/`;
   }
-  return `/${post.slug}`;
+  return `/${post.slug}/`;
 }
 
 const categoryMap = {
