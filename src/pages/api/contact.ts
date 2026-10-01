@@ -1,4 +1,5 @@
 import { Resend } from 'resend';
+import { env } from 'cloudflare:workers';
 
 export const prerender = false;
 
@@ -19,14 +20,17 @@ export async function POST({ request }: { request: Request }) {
     );
   }
 
-  const apiKey = import.meta.env.RESEND_API_KEY;
-  const fromEmail = import.meta.env.RESEND_FROM_EMAIL || 'onboarding@resend.dev';
-  const toEmail = import.meta.env.RESEND_TO_EMAIL || 'tennistekunosyan@yahoo.co.jp';
+  const apiKey = env.RESEND_API_KEY;
+  const fromEmail =
+    env.RESEND_FROM_EMAIL || 'onboarding@resend.dev';
+  const toEmail =
+    env.RESEND_TO_EMAIL || 'tennistekunosyan@yahoo.co.jp';
 
   if (!apiKey) {
     return new Response(
       JSON.stringify({
-        message: 'RESEND_API_KEY が設定されていません。環境変数を設定してください。',
+        message:
+          'RESEND_API_KEY が設定されていません。環境変数を設定してください。',
       }),
       {
         status: 500,
@@ -53,22 +57,36 @@ export async function POST({ request }: { request: Request }) {
     });
 
     if (response.error) {
-      return new Response(JSON.stringify({ message: response.error.message }), {
-        status: 500,
-        headers: { 'Content-Type': 'application/json' },
-      });
+      return new Response(
+        JSON.stringify({
+          message: response.error.message,
+        }),
+        {
+          status: 500,
+          headers: { 'Content-Type': 'application/json' },
+        },
+      );
     }
 
-    return new Response(JSON.stringify({ success: true }), {
-      status: 200,
-      headers: { 'Content-Type': 'application/json' },
-    });
+    return new Response(
+      JSON.stringify({ success: true }),
+      {
+        status: 200,
+        headers: { 'Content-Type': 'application/json' },
+      },
+    );
   } catch (error) {
-    const message = error instanceof Error ? error.message : 'メール送信に失敗しました。';
+    const message =
+      error instanceof Error
+        ? error.message
+        : 'メール送信に失敗しました。';
 
-    return new Response(JSON.stringify({ message }), {
-      status: 500,
-      headers: { 'Content-Type': 'application/json' },
-    });
+    return new Response(
+      JSON.stringify({ message }),
+      {
+        status: 500,
+        headers: { 'Content-Type': 'application/json' },
+      },
+    );
   }
 }
