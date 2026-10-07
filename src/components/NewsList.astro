@@ -1,7 +1,7 @@
 ---
 import '../styles/global.css';
 
-const { posts, title } = Astro.props;
+const { posts, title, showLink = false, linkHref = '/news-list/', linkText = '続きを見る' } = Astro.props;
 
 function getPostUrl(post) {
   if (post.data.url) {
@@ -49,9 +49,11 @@ function formatCategory(post) {
         </article>
       ))}
     </div>
-    <div class="news-link-wrapper">
-      <a class="news-link" href="/news-list/">続きを見る</a>
-    </div>
+    {showLink && (
+      <div class="news-link-wrapper">
+        <a class="news-link" href={linkHref}>{linkText}</a>
+      </div>
+    )}
   </div>
 </div>
 
