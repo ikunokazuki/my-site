@@ -7,6 +7,9 @@ function getPostUrl(post) {
   if (post.data.url) {
     return `/${post.data.url}/`;
   }
+  if (post.collection === 'blog') {
+    return `/blog/${post.slug}/`;
+  }
   return `/psychology/${post.slug}/`;
 }
 
@@ -17,10 +20,14 @@ function formatDate(date) {
 const categoryMap = {
   mental: 'メンタル改善',
   motivation: 'モチベーション',
+  blog: 'ブログ',
 };
 
-function formatCategory(category) {
-  return categoryMap[category];
+function formatCategory(post) {
+  if (post.collection === 'blog') {
+    return 'ブログ';
+  }
+  return categoryMap[post.data?.category] || post.data?.category || '';
 }
 ---
 
@@ -35,7 +42,7 @@ function formatCategory(category) {
           <a href={getPostUrl(post)}>
             <div class="news-body">
               <span class="news-date">{formatDate(post.data.pubDate)}</span>
-              <span class="news-category">{formatCategory(post.data.category)}</span>
+              <span class="news-category">{formatCategory(post)}</span>
               <p>{post.data.title}</p>
             </div>
           </a>

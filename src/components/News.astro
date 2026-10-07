@@ -2,9 +2,11 @@
 import { getCollection } from 'astro:content';
 import NewsList from './NewsList.astro';
 
-const posts = await getCollection('psychology');
-posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
-const latestPosts = posts.slice(0, 4);
+const psychologyPosts = await getCollection('psychology');
+const blogPosts = await getCollection('blog');
+const allPosts = [...psychologyPosts, ...blogPosts];
+allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const latestPosts = allPosts.slice(0, 4);
 ---
 
 <NewsList
