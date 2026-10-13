@@ -5,6 +5,7 @@ url: accept
 category: "mental"
 featureImage: 'https://res.cloudinary.com/db8hdvtj8/image/upload/f_auto,q_auto/v1782188985/accept-image_brrbmb.webp'
 featureImageAlt: 'accept-image'
+views: 1250
 ---
 この記事では、
 - 受容

@@ -5,6 +5,7 @@ url: kind-thanks
 category: "mental"
 featureImage: 'https://res.cloudinary.com/db8hdvtj8/image/upload/f_auto,q_auto/v1782194343/thanks_hb88qu.webp'
 featureImageAlt: 'thanks'
+views: 620
 ---
 今回は、  
 「親切」や「感謝」についてお話ししたいと思います。  

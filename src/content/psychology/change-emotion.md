@@ -5,6 +5,7 @@ url: change-emotion
 category: "mental"
 featureImage: 'https://res.cloudinary.com/db8hdvtj8/image/upload/f_auto,q_auto/v1782190173/change-image_kxzyff.webp'
 featureImageAlt: 'change-image'
+views: 510
 ---
 今回は、  
 「思考が変わることで感情が変わることがある」  

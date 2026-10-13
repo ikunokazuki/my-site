@@ -10,6 +10,7 @@ const blogCollection = defineCollection({
     url: z.string().optional(), // ← 追加: カスタムURL用のフィールド (オプショナル)
     featureImage: z.string().url().optional(), // 画像はオプショナルにする場合
     featureImageAlt: z.string().optional(),
+    views: z.number().optional().default(0),
   }),
 });
 
@@ -22,6 +23,7 @@ const psychologyCollection = defineCollection({
     category: z.string(),
     featureImage: z.string().url().optional(),
     featureImageAlt: z.string().optional(),
+    views: z.number().optional().default(0),
   }),
 });
 
