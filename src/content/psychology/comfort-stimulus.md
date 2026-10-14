@@ -5,6 +5,7 @@ url: comfort-stimulus
 category: "mental"
 featureImage: 'https://res.cloudinary.com/db8hdvtj8/image/upload/f_auto,q_auto/v1782193905/comfort_jpcwbc.webp'
 featureImageAlt: 'comfort'
+views: 80
 ---
 今回は、  
 「刺激」や「快適さ」についてお話ししたいと思います。  

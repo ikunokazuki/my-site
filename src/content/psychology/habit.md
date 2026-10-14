@@ -5,7 +5,6 @@ url: habit
 category: "motivation"
 featureImage: 'https://res.cloudinary.com/db8hdvtj8/image/upload/f_auto,q_auto/v1782194831/habit_jteymo.webp'
 featureImageAlt: 'habit'
-views: 980
 ---
 今回は、  
 「習慣」についてお話ししたいと思います。  

@@ -5,7 +5,7 @@ url: no-reaction
 category: "mental"
 featureImage: 'https://res.cloudinary.com/db8hdvtj8/image/upload/f_auto,q_auto/v1782192492/no-reaction_kkzea8.webp'
 featureImageAlt: 'no-reaction'
-views: 840
+views: 920
 ---
 今回は、反応しないことと、こだわりを少し緩めることについて書いてみたいと思います。  
 日常の中で、誰かの言葉に傷ついたり、腹が立ったりすることは誰にでもあると思います。  
