@@ -1,9 +1,9 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection } from "astro:content";
 
 // blog と psychology の両方のコレクションから記事を取得
-const blogPosts = await getCollection('blog');
-const psychologyPosts = await getCollection('psychology');
+const blogPosts = await getCollection("blog");
+const psychologyPosts = await getCollection("psychology");
 const allPosts = [...blogPosts, ...psychologyPosts];
 
 // 閲覧回数（views）の多い順に並び替え、上位5件を取得
@@ -24,214 +24,221 @@ function getPostUrl(post: (typeof allPosts)[number]) {
   if (post.data.url) {
     return `/${post.data.url}/`;
   }
-  const slug = post.slug ?? post.id.replace(/\.md$/, '');
+  const slug = post.slug ?? post.id.replace(/\.md$/, "");
   return `/${slug}/`;
 }
 ---
 
 <div class="container">
-  <h2 class="title">人気記事</h2>
+  <h2 class="title">おすすめ記事</h2>
   <ul class="popular-list">
-    {popularPosts.map((post, index) => (
-      <li class="popular-item">
-        <a href={getPostUrl(post)} class="post-link">
-          <div class="thumb-container">
-            <span class={`rank-badge rank-${index + 1}`}>{index + 1}</span>
-            {post.data.featureImage ? (
-              <img
-                src={post.data.featureImage}
-                alt={post.data.featureImageAlt || post.data.title}
-                class="thumbnail"
-                loading="lazy"
-              />
-            ) : (
-              <div class="no-thumbnail">No Image</div>
-            )}
-          </div>
-          <div class="post-content">
-            <time datetime={post.data.pubDate.toISOString()} class="post-date">
-              {post.data.pubDate.toLocaleDateString('ja-JP').replace(/\//g, '.')}
-            </time>
-            <p class="post-title">{post.data.title}</p>
-          </div>
-        </a>
-      </li>
-    ))}
+    {
+      popularPosts.map((post, index) => (
+        <li class="popular-item">
+          <a href={getPostUrl(post)} class="post-link">
+            <div class="thumb-container">
+              <span class={`rank-badge rank-${index + 1}`}>{index + 1}</span>
+              {post.data.featureImage ? (
+                <img
+                  src={post.data.featureImage}
+                  alt={post.data.featureImageAlt || post.data.title}
+                  class="thumbnail"
+                  loading="lazy"
+                />
+              ) : (
+                <div class="no-thumbnail">No Image</div>
+              )}
+            </div>
+            <div class="post-content">
+              <time
+                datetime={post.data.pubDate.toISOString()}
+                class="post-date"
+              >
+                {post.data.pubDate
+                  .toLocaleDateString("ja-JP")
+                  .replace(/\//g, ".")}
+              </time>
+              <p class="post-title">{post.data.title}</p>
+            </div>
+          </a>
+        </li>
+      ))
+    }
   </ul>
 </div>
 
 <style>
-.container {
-  width: 250px;
-  margin-left: 50px;
-  margin-bottom: 50px;
-}
-
-.title {
-  text-align: left;
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 20px;
-  color: #604461;
-}
-
-.popular-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.popular-item {
-  background-color: #ffffff;
-  border: 2px solid #000;
-  border-radius: 12px;
-  overflow: hidden;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-}
-
-.popular-item:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
-}
-
-.post-link {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 10px;
-  text-decoration: none;
-  color: inherit;
-}
-
-.thumb-container {
-  position: relative;
-  width: 75px;
-  height: 75px;
-  flex-shrink: 0;
-  border-radius: 8px;
-  overflow: hidden;
-  background-color: #f0f0f0;
-}
-
-.thumbnail {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-.no-thumbnail {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 11px;
-  color: #888;
-}
-
-.rank-badge {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 22px;
-  height: 22px;
-  font-size: 12px;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #ffffff;
-  border-bottom-right-radius: 6px;
-  z-index: 1;
-}
-
-.rank-badge.rank-1 {
-  background-color: #e5a823; /* ゴールド */
-}
-
-.rank-badge.rank-2 {
-  background-color: #8e9aaf; /* シルバー */
-}
-
-.rank-badge.rank-3 {
-  background-color: #c48b71; /* ブロンズ */
-}
-
-.rank-badge.rank-4,
-.rank-badge.rank-5 {
-  background-color: #604461;
-}
-
-.post-content {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  min-width: 0;
-  flex: 1;
-}
-
-.post-date {
-  font-size: 12px;
-  color: #777;
-  margin-bottom: 4px;
-}
-
-.post-title {
-  font-size: 13px;
-  font-weight: bold;
-  line-height: 1.4;
-  color: #000;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  margin: 0;
-}
-
-.post-link:hover .post-title {
-  color: #604461;
-}
-
-@media screen and (max-width: 1100px) {
   .container {
-    width: 600px;
-    margin: 0 auto 50px;
+    width: 210px;
+    margin-left: 50px;
+    margin-bottom: 30px;
+    background-color: #fff;
+    padding: 20px;
+  }
+
+  .title {
+    text-align: left;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #604461;
+  }
+
+  .popular-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .popular-item {
+    border-bottom: 1px solid #d2d2d2;
+  }
+
+  .popular-item:last-child {
+    border-bottom: none;
+  }
+
+  .post-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 0;
+    text-decoration: none;
+    color: inherit;
+    transition: opacity 0.2s ease;
+  }
+
+  .post-link:hover {
+    opacity: 0.8;
   }
 
   .thumb-container {
-    width: 90px;
-    height: 90px;
+    position: relative;
+    width: 75px;
+    height: 75px;
+    flex-shrink: 0;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #f0f0f0;
   }
 
-  .post-title {
-    font-size: 15px;
+  .thumbnail {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .no-thumbnail {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    color: #888;
+  }
+
+  .rank-badge {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 22px;
+    height: 22px;
+    font-size: 12px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    border-bottom-right-radius: 6px;
+    z-index: 1;
+  }
+
+  .rank-badge.rank-1 {
+    background-color: #e5a823; /* ゴールド */
+  }
+
+  .rank-badge.rank-2 {
+    background-color: #8e9aaf; /* シルバー */
+  }
+
+  .rank-badge.rank-3 {
+    background-color: #c48b71; /* ブロンズ */
+  }
+
+  .rank-badge.rank-4,
+  .rank-badge.rank-5 {
+    background-color: #604461;
+  }
+
+  .post-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 0;
+    flex: 1;
   }
 
   .post-date {
-    font-size: 13px;
-  }
-}
-
-@media screen and (max-width: 600px) {
-  .container {
-    width: initial;
-    max-width: 100%;
-    margin: 20px;
-  }
-
-  .thumb-container {
-    width: 75px;
-    height: 75px;
+    font-size: 12px;
+    color: #777;
+    margin-bottom: 4px;
   }
 
   .post-title {
     font-size: 13px;
+    font-weight: bold;
+    line-height: 1.4;
+    color: #000;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 0;
   }
-}
+
+  .post-link:hover .post-title {
+    color: #604461;
+  }
+
+  @media screen and (max-width: 1100px) {
+    .container {
+      width: 600px;
+      margin: 0 auto 50px;
+    }
+
+    .thumb-container {
+      width: 90px;
+      height: 90px;
+    }
+
+    .post-title {
+      font-size: 15px;
+    }
+
+    .post-date {
+      font-size: 13px;
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    .container {
+      width: initial;
+      max-width: 100%;
+      margin: 20px;
+    }
+
+    .thumb-container {
+      width: 75px;
+      height: 75px;
+    }
+
+    .post-title {
+      font-size: 13px;
+    }
+  }
 </style>
