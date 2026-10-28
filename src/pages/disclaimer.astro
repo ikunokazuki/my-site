@@ -1,15 +1,82 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import DisclaimerContent from '../content/pages/disclaimer.md';
 import '../styles/global.css';
 ---
-<BaseLayout title="お問い合わせ - こころ和む心理学">
-  <h1>準備中</h1>
+
+<BaseLayout title="免責事項 - こころ和む心理学">
+  <div class="disclaimer-container">
+    <article class="disclaimer-content">
+      <DisclaimerContent />
+    </article>
+  </div>
 </BaseLayout>
 
 <style>
-h1 {
-  margin:100px 100px 200px;
-  font-size: 40px;
-}
+  .disclaimer-container {
+    max-width: 840px;
+    margin: 140px auto 80px;
+    padding: 0 20px;
+  }
 
+  .disclaimer-content {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 50px 60px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    line-height: 1.85;
+    color: #333333;
+  }
+
+  :global(.disclaimer-content h1) {
+    font-size: clamp(1.8rem, 2.5vw, 2.2rem);
+    color: #2d2d2d;
+    text-align: center;
+    margin-bottom: 40px;
+    padding-bottom: 16px;
+    border-bottom: 3px solid #e0f1f1;
+  }
+
+  :global(.disclaimer-content h2) {
+    font-size: 1.25rem;
+    color: #47619e;
+    margin-top: 36px;
+    margin-bottom: 14px;
+    padding-left: 12px;
+    border-left: 4px solid #2bb7b3;
+  }
+
+  :global(.disclaimer-content p) {
+    font-size: 0.95rem;
+    line-height: 1.9;
+    margin-bottom: 16px;
+    color: #333333;
+  }
+
+  :global(.disclaimer-content p:last-child) {
+    margin-bottom: 0;
+  }
+
+  @media screen and (max-width: 768px) {
+    .disclaimer-container {
+      margin-top: 100px;
+      margin-bottom: 50px;
+      padding: 0 16px;
+    }
+
+    .disclaimer-content {
+      padding: 30px 20px;
+      border-radius: 12px;
+    }
+
+    :global(.disclaimer-content h1) {
+      font-size: 1.6rem;
+      margin-bottom: 24px;
+    }
+
+    :global(.disclaimer-content h2) {
+      font-size: 1.15rem;
+      margin-top: 28px;
+    }
+  }
 </style>
